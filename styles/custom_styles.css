@@ -1,0 +1,52 @@
+/*BUTTONS*/
+.btn{
+    border-radius: 6px;
+}
+
+/*METRICS*/
+.px-2{
+    padding-left: 24px!important;
+    padding-right: 24px!important;
+}
+
+.mb-2{
+    margin-bottom: 24px!important;
+}
+.mr-12{
+    margin-right: 12px!important;
+}
+
+/*ACCORDION*/
+.accordion {
+    height: 100%;
+   max-width: 1160px;
+    width: 100%;
+    min-width: 560px;
+}
+
+.accordion-item {
+    margin-bottom: 24px;
+    /*width: 1160px;*/
+}
+
+.accordion-body {
+    padding: 0 1.25rem;
+}
+
+.accordion-button {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 120%;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #0c63e4;
+    background-color: #fff;
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    border-color: inherit;
+    outline: 0;
+    box-shadow: none;
+}
