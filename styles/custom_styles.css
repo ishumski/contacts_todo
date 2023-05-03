@@ -19,14 +19,14 @@
 /*ACCORDION*/
 .accordion {
     height: 100%;
-   max-width: 1160px;
     width: 100%;
-    min-width: 560px;
 }
 
 .accordion-item {
     margin-bottom: 24px;
-    /*width: 1160px;*/
+    max-width: 1160px;
+    width: 100%;
+    min-width: 560px;
 }
 
 .accordion-body {

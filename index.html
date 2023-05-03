@@ -14,65 +14,58 @@
     <link rel="icon" type="image/svg" href="./core/icons/tab_icon.svg">
 </head>
 <body>
-<div class="wrapper">
-    <header class="header__wrapper">
-        <div class="header d-flex justify-content-between align-items-center">
-            <div class="header__logo d-flex">
-                <img class="mr-16" src="./core/icons/contacts_logo.svg" alt="contact-icon" height="22px" width="18">
-                <div class="header__title ">Книга контактов</div>
-            </div>
-            <div class="header__button d-flex">
-                <button type="button" class="btn btn-danger mr-16" >
-                    <span id="add-contact"> Добавить контакт</span>
-                    <img src="./core/icons/plus_icon.svg" alt="">
-                </button>
-                <button id="add-group" type="button" class="btn btn-primary">Группы</button>
-            </div>
+<header class="header__wrapper">
+    <div class="header d-flex justify-content-between align-items-center">
+        <div class="header__logo d-flex">
+            <img class="mr-16" src="./core/icons/contacts_logo.svg" alt="contact-icon" height="22px" width="18">
+            <div class="header__title ">Книга контактов</div>
         </div>
-    </header>
-    <div id="opacity-template"></div>
-    <main class="main">
-        <div id="content-container" class="accordion content-container "></div>
-        <div id="screen" class="screen">
-            <div class="contact-menu d-flex flex-column position-absolute top-0 start-0 index">
-                <div class="contact-menu__header d-flex justify-content-between align-items-center border-bottom border-1 px-2 mb-2">
-                    <div>Добавление контакта</div>
-                    <button type="button" class="btn-close"></button>
-                </div>
-                <div class="contact-menu__form flex-grow-1 px-2">
-                    <input type="text" id="userName" class="form-control form-item" placeholder="Введите ФИО"
-                           aria-label="Recipient's username">
-                    <input type="number" id="phoneNumber"  class="form-control form-item" placeholder="Введите номер"
-                           aria-label="Recipient's username">
-                    <select id="group" class="form-select form-item" aria-label="Default select example">
-                        <option selected>Выберете группу</option>
-                    </select>
-                </div>
-                <div class="contact-menu__footer d-flex justify-content-end px-2 mb-2">
-                    <button type="button" id="save-btn" class="btn btn-primary">Сохранить</button>
-                    <button type="button" id="update-btn" class="btn btn-primary">Обновить</button>
-                </div>
-            </div>
+        <div class="header__button d-flex">
+            <button type="button" class="btn btn-danger mr-16">
+                <span id="add-contact"> Добавить контакт</span>
+                <img src="./core/icons/plus_icon.svg" alt="">
+            </button>
+            <button id="add-group" type="button" class="btn btn-primary">Группы</button>
         </div>
-        <div id="group-screen" class="group-screen">
-            <div class="contact-menu d-flex flex-column position-absolute top-0 start-0 index">
-                <div class="contact-menu__header d-flex justify-content-between align-items-center border-bottom border-1 px-2 mb-2">
-                    <div>Группы контактов</div>
-                    <button type="button" class="btn-close"></button>
-                </div>
-                <div class="contact-menu__form flex-grow-1 px-2">
-                    <ul id="groups-list" ></ul>
-                </div>
-                <div class="contact-menu__footer d-flex justify-content-end px-2 mb-2">
-                    <button type="button" id="add-group-btn">Добавить</button>
-                    <button type="button" id="save-group-button" class="btn btn-primary">Сохранить</button>
-                </div>
-            </div>
+    </div>
+</header>
+<div id="opacity-template"></div>
+<div id="content-container" class="accordion content-container "></div>
+<div id="addContactSidebar" class="add-contact-sidebar">
+    <div class="sidebar d-flex flex-column position-absolute top-0 start-0 index">
+        <div class="sidebar__header d-flex justify-content-between align-items-center border-bottom border-1 px-2 mb-2">
+            <div>Добавление контакта</div>
+            <button type="button" class="btn-close"></button>
         </div>
-
-    </main>
-
+        <div class="flex-grow-1 px-2">
+            <input type="text" id="userName" class="form-control form-item" placeholder="Введите ФИО">
+            <input type="number" id="phoneNumber" class="form-control form-item" placeholder="Введите номер">
+            <select id="group" class="form-select form-item" aria-label="Default select example">
+                <option selected>Выберете группу</option>
+            </select>
+        </div>
+        <div class="sidebar__footer d-flex justify-content-end px-2 mb-2">
+            <button type="button" id="save-btn" class="btn btn-primary">Сохранить</button>
+            <button type="button" id="update-btn" class="btn btn-primary">Обновить</button>
+        </div>
+    </div>
 </div>
+<div id="addGroupSidebar" class="add-group-sidebar">
+    <div class="sidebar d-flex flex-column position-absolute top-0 start-0 index">
+        <div class="sidebar__header d-flex justify-content-between align-items-center border-bottom border-1 px-2 mb-2">
+            <div>Группы контактов</div>
+            <button type="button" class="btn-close"></button>
+        </div>
+        <div class="flex-grow-1 px-2">
+            <ul id="groups-list"></ul>
+        </div>
+        <div class="sidebar__footer d-flex justify-content-end px-2 mb-2">
+            <button type="button" id="add-group-btn">Добавить</button>
+            <button type="button" id="save-group-button" class="btn btn-primary">Сохранить</button>
+        </div>
+    </div>
+</div>
+
 
 <script type="text/javascript" src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"

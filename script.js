@@ -14,13 +14,17 @@ const addGroupButton = document.getElementById('add-group-btn')
 const saveGroupBtn = document.getElementById('save-group-button')
 
 /*SCREENS*/
-const contactMenu = document.querySelector('.screen')
-const groupScreen = document.getElementById('group-screen')
+const addContactSidebar = document.querySelector('.add-contact-sidebar')
+const addGroupSidebar = document.querySelector('.add-group-sidebar')
 const opacityTemplate = document.getElementById('opacity-template')
 const contactsListView = document.getElementById('content-container')
 const groupsList = document.getElementById('groups-list')
 
-const noContacts = '<div class="no-contacts">Список контактов пуст</div>'
+const noContacts = `<div class="no-contacts-wrapper">
+                        <div class="no-contacts">
+                           Список контактов пуст
+                        </div>
+                     </div>`
 
 /*UNIQUE ID GENERATOR*/
 const uuidv4 = () => {
@@ -34,13 +38,13 @@ let contacts = []
 
 /*SHOW AND HIDE SIDEBAR FUNCTIONS*/
 const showSidebar = () => {
-    contactMenu.style.display = 'block'
+    addContactSidebar.style.display = 'block'
     opacityTemplate.style.display = 'block'
 }
 
 const hideSidebar = () => {
-    contactMenu.style.display = 'none'
-    groupScreen.style.display = 'none'
+    addContactSidebar.style.display = 'none'
+    addGroupSidebar.style.display = 'none'
     opacityTemplate.style.display = 'none'
     window.location.reload()
 }
@@ -49,7 +53,7 @@ addContactBtn.addEventListener('click', showSidebar)
 closeButton.forEach(elem => elem.addEventListener('click', hideSidebar))
 
 addGroupBtn.onclick = () => {
-    groupScreen.style.display = 'block'
+    addGroupSidebar.style.display = 'block'
     opacityTemplate.style.display = 'block'
 }
 
