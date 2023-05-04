@@ -233,7 +233,10 @@ updateButtonNode.forEach((item) => {
 
 /*SET DEFAULT GROUPS TO LOCAL STORAGE*/
 function setDefaultGroups() {
-    if (localStorage.getItem('groups') === null || localStorage.getItem('groups').length === 0) {
+    const localStorageGroups = JSON.parse(localStorage.getItem('groups'))
+    const isGroupsNotExist = localStorageGroups === null || localStorageGroups.length === 0
+
+    if (isGroupsNotExist) {
         localStorage.setItem('groups', JSON.stringify(groups));
     }
 }
