@@ -123,12 +123,26 @@ function showData() {
 //LOAD ALL DATA WHEN DOCUMENT OR PAGE LOADED
 document.onload = showData()
 
+function validateInputValue(inputValue) {
+    if (inputValue.value === '') {
+        inputValue.classList.add('is-invalid')
+        return false
+    } else {
+        inputValue.classList.remove('is-invalid')
+        return true
+    }
+}
+
+
 /* ADD CONTACT DATA */
 function addContact() {
     let formData = {}
     let contactsList
-    formData["userName"] = document.getElementById('userName').value
-    formData["phoneNumber"] = document.getElementById('phoneNumber').value
+    const userName = document.getElementById('userName')
+    const phoneNumber = document.getElementById('phoneNumber')
+
+    formData["userName"] = userName.value
+    formData["phoneNumber"] = phoneNumber.value
     formData["group"] = document.getElementById('group').value
     formData["id"] = uuidv4()
 
@@ -138,13 +152,14 @@ function addContact() {
         contactsList = JSON.parse(localStorage.getItem('contacts'))
     }
 
-    contactsList.push(formData)
-    localStorage.setItem('contacts', JSON.stringify(contactsList));
-    showData()
-    hideSidebar()
-    document.getElementById('userName').value = ''
-    document.getElementById('phoneNumber').value = ''
-    window.location.reload()
+    if (validateInputValue(userName) & validateInputValue(phoneNumber)) {
+        localStorage.setItem('contacts', JSON.stringify([...contactsList, formData]));
+        showData()
+        hideSidebar()
+        userName.value = ''
+        phoneNumber.value = ''
+        return true
+    }
 }
 
 saveContactBtn.addEventListener('click', addContact)
@@ -173,6 +188,10 @@ document.querySelectorAll('.delete')
 /* UPDATE CONTACT*/
 function updateContact(contactId) {
     let contactsList
+    let userName = document.getElementById('userName')
+    let phoneNumber = document.getElementById('phoneNumber')
+    let group = document.getElementById('group')
+
     if (localStorage.getItem('contacts') == null) {
         contactsList = []
     } else {
@@ -185,18 +204,19 @@ function updateContact(contactId) {
 
     if (existingItem) {
         showSidebar()
-        document.getElementById('userName').value = existingItem.userName
-        document.getElementById('phoneNumber').value = existingItem.phoneNumber
-        document.getElementById('group').value = existingItem.group
+        userName.value = existingItem.userName
+        phoneNumber.value = existingItem.phoneNumber
+        group.value = existingItem.group
     }
     updateBtn.onclick = () => {
-        existingItem.userName = document.getElementById('userName').value
-        existingItem.phoneNumber = document.getElementById('phoneNumber').value
-        existingItem.group = document.getElementById('group').value
-        localStorage.setItem('contacts', JSON.stringify(contactsList));
-        showData()
-        hideSidebar()
-        window.location.reload()
+        if (validateInputValue(userName) && validateInputValue(phoneNumber)) {
+            existingItem.userName = userName.value
+            existingItem.phoneNumber = phoneNumber.value
+            existingItem.group = group.value
+            localStorage.setItem('contacts', JSON.stringify(contactsList));
+            showData()
+            hideSidebar()
+        }
     }
 }
 
