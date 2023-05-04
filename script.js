@@ -294,10 +294,9 @@ addGroupButton.addEventListener('click', function () {
 /* SAVE GROUP */
 function saveGroup() {
     const groupInputValues = document.querySelectorAll('.group-input')
-    let updatedValues = []
-    groupInputValues.forEach(elem => {
-        updatedValues.push(elem.value)
-    })
+    const updatedValues = Array.from(groupInputValues)
+        .map(elem => elem.value)
+        .filter(elem => elem !== '')
     localStorage.setItem('groups', JSON.stringify(updatedValues))
 }
 
@@ -305,7 +304,6 @@ saveGroupBtn.addEventListener('click', function () {
     saveGroup()
     groupsOptions()
     hideSidebar()
-    window.location.reload()
 })
 
 /*PREPARE DATA CONTACTS SORTED BY GROUPS*/
